@@ -13,6 +13,7 @@ services:
   site:
     build:
       context: ..
+      dockerfile: deploy/frontend.Dockerfile
       secrets: [env]
     image: __PROJECT__
     container_name: __PROJECT__

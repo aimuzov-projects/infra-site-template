@@ -13,9 +13,15 @@
 
 Статичный сайт на [Astro](https://astro.build), интерактивные островки на [Svelte](https://svelte.dev).
 
+## Раскладка
+
+- [`src/frontend`](src/frontend) — сайт на Astro, это `srcDir` в `astro.config.mjs`. Импорты — через `#frontend/*`.
+- Если проекту нужен свой API, он встаёт рядом с сайтом, как в shkatova-psychologist и prestige-logist: сервис в `src/backend` (`#backend/*`, голый Node без сборки), общий для обеих сторон код в `src/shared` (`#shared/*`), образ в `deploy/backend.Dockerfile` и второй сервис в `deploy/docker-compose.yml`. Сайт из `src/backend` ничего не импортирует.
+- [`deploy`](deploy) — всё про сервер: Dockerfile, compose, nginx и скрипт выкладки.
+
 ## Запуск
 
-Нужен Node 26.11.1, эта же версия закреплена в `package.json` и в Dockerfile.
+Нужен Node 26.11.1, эта же версия закреплена в `package.json` и в [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
 
 ```sh
 cp .env.example .env

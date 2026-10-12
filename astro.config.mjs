@@ -3,6 +3,8 @@ import svelte from '@astrojs/svelte'
 import { defineConfig } from 'astro/config'
 
 export default defineConfig({
+	// Сайт живёт в src/frontend: рядом встают src/backend и src/shared, когда проекту нужен свой API.
+	srcDir: './src/frontend',
 	// Абсолютные ссылки в canonical, og:url и sitemap.
 	site: 'https://__DOMAIN__',
 	// CSS немного: внутри HTML он не блокирует первую отрисовку отдельным запросом.
