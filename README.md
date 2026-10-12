@@ -16,6 +16,7 @@ A static site built with [Astro](https://astro.build), interactive islands are w
 ## Layout
 
 - [`src/frontend`](src/frontend) — the Astro site, it is the `srcDir` in `astro.config.mjs`. Imports go through `#frontend/*`.
+- Every file, components included, is named in kebab-case: `base.astro`, `section-photo.astro`. The name used in markup comes from the import (`import Base from '#frontend/layouts/base.astro'`), and the `unicorn/filename-case` rule in oxlint keeps file names in line.
 - When the project needs its own API, it goes next to the site, the way shkatova-psychologist and prestige-logist do it: the service in `src/backend` (`#backend/*`, plain Node running TypeScript, no build), code both sides need in `src/shared` (`#shared/*`), the image in `deploy/backend.Dockerfile` and a second service in `deploy/docker-compose.yml`. The site never imports from `src/backend`.
 - [`deploy`](deploy) — everything about the server: Dockerfiles, compose, nginx and the deploy script.
 
