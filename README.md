@@ -39,7 +39,7 @@ The build puts a CSP with hashes of Astro's scripts and styles into every page (
 
 ## Deployment
 
-A push to `main` triggers GitHub Actions: checks first, then an SSH login to the server. There the key is bound to [`deploy/remote.sh`](deploy/remote.sh), which pulls `main` and rebuilds the container from [`deploy/docker-compose.yml`](deploy/docker-compose.yml). The domain is served by the server's shared Caddy ([aimuzov-projects/server-infra](https://github.com/aimuzov-projects/server-infra)), and `.env` lives on the server next to the repository. The deploy job runs only when the repository variable `DEPLOY_ENABLED` is `true`.
+A push to `main` triggers GitHub Actions: checks first, then an SSH login to the server. There the key is bound to [`deploy/remote.sh`](deploy/remote.sh), which pulls `main` and rebuilds the container from [`deploy/docker-compose.yml`](deploy/docker-compose.yml). The domain is served by the server's shared Caddy ([aimuzov-projects/infra-server](https://github.com/aimuzov-projects/infra-server)), and `.env` lives on the server next to the repository. The deploy job runs only when the repository variable `DEPLOY_ENABLED` is `true`.
 
 ## License
 

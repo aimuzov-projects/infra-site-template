@@ -18,7 +18,7 @@ jobs:
     uses: ./.github/workflows/check.yml
 
   # Пока сервер не подготовлен (ключ, клон в /srv, сайт в Caddy), выкладка пропускается.
-  # Включается переменной репозитория DEPLOY_ENABLED=true. В самом site-template её нет.
+  # Включается переменной репозитория DEPLOY_ENABLED=true. В самом infra-template-site её нет.
   deploy:
     needs: check
     if: vars.DEPLOY_ENABLED == 'true'

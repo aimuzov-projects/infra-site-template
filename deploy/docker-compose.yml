@@ -1,4 +1,4 @@
-# Сайт на сервере projects. Порты 80/443 держит общий Caddy из aimuzov-projects/server-infra,
+# Сайт на сервере projects. Порты 80/443 держит общий Caddy из aimuzov-projects/infra-server,
 # он проксирует домен сюда по сети edge.
 
 name: __PROJECT__

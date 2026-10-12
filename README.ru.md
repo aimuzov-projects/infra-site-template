@@ -39,7 +39,7 @@ npm run format:check && npm run lint:js && npm run lint:css && npm run check && 
 
 ## Выкладка
 
-Пуш в `main` запускает GitHub Actions: сначала проверки, затем вход по SSH на сервер. Там ключ привязан к [`deploy/remote.sh`](deploy/remote.sh), который подтягивает `main` и пересобирает контейнер из [`deploy/docker-compose.yml`](deploy/docker-compose.yml). Домен обслуживает общий Caddy сервера ([aimuzov-projects/server-infra](https://github.com/aimuzov-projects/server-infra)), `.env` лежит на сервере рядом с репозиторием. Job выкладки запускается, только когда переменная репозитория `DEPLOY_ENABLED` равна `true`.
+Пуш в `main` запускает GitHub Actions: сначала проверки, затем вход по SSH на сервер. Там ключ привязан к [`deploy/remote.sh`](deploy/remote.sh), который подтягивает `main` и пересобирает контейнер из [`deploy/docker-compose.yml`](deploy/docker-compose.yml). Домен обслуживает общий Caddy сервера ([aimuzov-projects/infra-server](https://github.com/aimuzov-projects/infra-server)), `.env` лежит на сервере рядом с репозиторием. Job выкладки запускается, только когда переменная репозитория `DEPLOY_ENABLED` равна `true`.
 
 ## Лицензия
 
