@@ -16,6 +16,7 @@
 ## Раскладка
 
 - [`src/frontend`](src/frontend) — сайт на Astro, это `srcDir` в `astro.config.mjs`. Импорты — через `#frontend/*`.
+- Все файлы, компоненты тоже, называются в kebab-case: `base.astro`, `section-photo.astro`. Имя в разметке задаёт импорт (`import Base from '#frontend/layouts/base.astro'`), а за файлами следит правило `unicorn/filename-case` в oxlint.
 - Если проекту нужен свой API, он встаёт рядом с сайтом, как в shkatova-psychologist и prestige-logist: сервис в `src/backend` (`#backend/*`, голый Node без сборки), общий для обеих сторон код в `src/shared` (`#shared/*`), образ в `deploy/backend.Dockerfile` и второй сервис в `deploy/docker-compose.yml`. Сайт из `src/backend` ничего не импортирует.
 - [`deploy`](deploy) — всё про сервер: Dockerfile, compose, nginx и скрипт выкладки.
 
