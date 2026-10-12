@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
-import { site } from '#/data/site.ts'
+import { site } from '#frontend/data/site.ts'
 
 import { pageTitle } from './title.ts'
 
