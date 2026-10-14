@@ -52,7 +52,7 @@ Every file, components included, is named in kebab-case: `base.astro`, `section-
 
 ## Running
 
-Stack and layout follow [infra-template-site](https://github.com/aimuzov-projects/infra-template-site): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test`. Node comes from [`mise.toml`](mise.toml), the same version is pinned in `package.json` and [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
+Stack and layout follow [infra-site-template](https://github.com/aimuzov-projects/infra-site-template): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test`. Node comes from [`mise.toml`](mise.toml), the same version is pinned in `package.json` and [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
 
 ```sh
 cp .env.example .env   # may stay empty, but the file has to exist
@@ -82,7 +82,7 @@ The build puts a CSP with hashes of Astro's scripts and styles into every page (
 
 ## Deployment
 
-The projects server from [infra-server](https://github.com/aimuzov-projects/infra-server): a push to `main` runs `deploy.yml`, which runs the checks and logs in over SSH. The steps of both come from [site-kit](https://github.com/aimuzov-projects/site-kit), which also holds the server address and its `known_hosts` line. There the key is bound to [`deploy/remote.sh`](deploy/remote.sh), which pulls `main` and rebuilds the `__PROJECT__` container (nginx with the static site) from [`deploy/docker-compose.yml`](deploy/docker-compose.yml). The domain and TLS are handled by the shared Caddy. `.env` lives on the server in `/srv/__PROJECT__`.
+The projects server from [infra-server](https://github.com/aimuzov-projects/infra-server): a push to `main` runs `deploy.yml`, which runs the checks and logs in over SSH. The steps of both come from [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit), which also holds the server address and its `known_hosts` line. There the key is bound to [`deploy/remote.sh`](deploy/remote.sh), which pulls `main` and rebuilds the `__PROJECT__` container (nginx with the static site) from [`deploy/docker-compose.yml`](deploy/docker-compose.yml). The domain and TLS are handled by the shared Caddy. `.env` lives on the server in `/srv/__PROJECT__`.
 
 The deploy job runs only when the repository variable `DEPLOY_ENABLED` is `true`, so until the server is set up, a push only runs the checks.
 

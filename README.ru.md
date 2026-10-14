@@ -50,7 +50,7 @@
 
 ## Запуск
 
-Стек и раскладка — из [infra-template-site](https://github.com/aimuzov-projects/infra-template-site): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test`. Node берётся из [`mise.toml`](mise.toml), эта же версия закреплена в `package.json` и в [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
+Стек и раскладка — из [infra-site-template](https://github.com/aimuzov-projects/infra-site-template): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test`. Node берётся из [`mise.toml`](mise.toml), эта же версия закреплена в `package.json` и в [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
 
 ```sh
 cp .env.example .env   # может остаться пустым, но файл должен быть
@@ -80,7 +80,7 @@ Safari на iPhone сам приближает страницу, когда вс
 
 ## Выкладка
 
-Сервер проектов из [infra-server](https://github.com/aimuzov-projects/infra-server): пуш в `main` запускает `deploy.yml`, он гоняет проверки и заходит по SSH. Шаги обоих берутся из [site-kit](https://github.com/aimuzov-projects/site-kit), там же адрес сервера и его строка `known_hosts`. Там ключ привязан к [`deploy/remote.sh`](deploy/remote.sh), который подтягивает `main` и пересобирает контейнер `__PROJECT__` (nginx со статикой) из [`deploy/docker-compose.yml`](deploy/docker-compose.yml). Домен и TLS держит общий Caddy. `.env` лежит на сервере в `/srv/__PROJECT__`.
+Сервер проектов из [infra-server](https://github.com/aimuzov-projects/infra-server): пуш в `main` запускает `deploy.yml`, он гоняет проверки и заходит по SSH. Шаги обоих берутся из [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit), там же адрес сервера и его строка `known_hosts`. Там ключ привязан к [`deploy/remote.sh`](deploy/remote.sh), который подтягивает `main` и пересобирает контейнер `__PROJECT__` (nginx со статикой) из [`deploy/docker-compose.yml`](deploy/docker-compose.yml). Домен и TLS держит общий Caddy. `.env` лежит на сервере в `/srv/__PROJECT__`.
 
 Job выкладки запускается, только когда переменная репозитория `DEPLOY_ENABLED` равна `true`, так что пока сервер не готов, пуш гоняет одни проверки.
 
