@@ -53,7 +53,7 @@ Every file, components included, is named in kebab-case: `base.astro`, `section-
 
 ## Running
 
-Stack and layout follow [infra-site-template](https://github.com/aimuzov-projects/infra-site-template): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test`. The Prettier, stylelint and oxlint configs and the CI steps come from [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit). Node comes from [`mise.toml`](mise.toml), the same version is pinned in `package.json` and [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
+Stack and layout follow [infra-site-template](https://github.com/aimuzov-projects/infra-site-template): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test` for unit tests, Playwright for e2e. The Prettier, stylelint, oxlint and Playwright configs and the CI steps come from [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit). Node comes from [`mise.toml`](mise.toml), the same version is pinned in `package.json` and [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
 
 ```sh
 cp .env.example .env   # may stay empty, but the file has to exist
@@ -65,6 +65,12 @@ Before committing, the same checks as in CI:
 
 ```sh
 npm run format:check && npm run lint:js && npm run lint:css && npm run check && npm test
+```
+
+E2E tests in [`e2e`](e2e) build the site and open it in Chromium: every sitemap page answers without console errors and passes axe, the Metrika waits for the first interaction. The browser is installed once with `npx playwright install chromium`.
+
+```sh
+npm run test:e2e
 ```
 
 ## Mobile
