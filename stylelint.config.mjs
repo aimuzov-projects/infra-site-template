@@ -12,7 +12,7 @@ const bem = new RegExp(`^${name}(?:__${name})?(?:--${mod})?$`)
 // So we join & with the parent ourselves, like postcss-nested does.
 const ruleName = 'local/bem-class'
 const messages = stylelint.utils.ruleMessages(ruleName, {
-	rejected: (cls) => `Класс ".${cls}" не по BEM: block__elem--mod`,
+	rejected: (cls) => `Class ".${cls}" is not BEM: block__elem--mod`,
 })
 
 const resolve = (rule) => {
@@ -50,7 +50,7 @@ export default {
 		'order/properties-order': [propertyGroups.map((properties) => ({ properties })), { unspecified: 'bottom' }],
 		'selector-max-type': [
 			0,
-			{ ignoreTypes: ['html', 'body'], message: 'Тег внутри блока: дайте элементу класс block__elem' },
+			{ ignoreTypes: ['html', 'body'], message: 'Tag inside a block: give the element a block__elem class' },
 		],
 	},
 	overrides: [
