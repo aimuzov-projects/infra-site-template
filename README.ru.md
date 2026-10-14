@@ -35,6 +35,7 @@
 
 - **Главная** (`/`): название и описание сайта из [`src/frontend/data/site.ts`](src/frontend/data/site.ts).
 - **404**: заглушка «такой страницы нет» со ссылкой на главную.
+- **Футер**: подпись автора из [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit) со ссылкой на исходный код, `repo` в [`site.ts`](src/frontend/data/site.ts).
 - **Аналитика**: Яндекс Метрика, компонент счётчика берётся из [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit) и сам добавляет свои источники в CSP; номер счётчика — `metrikaId` в [`site.ts`](src/frontend/data/site.ts).
 
 ## Как устроено

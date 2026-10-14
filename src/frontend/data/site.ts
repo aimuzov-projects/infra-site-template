@@ -5,4 +5,6 @@ export const site = {
 	description: '__DESCRIPTION__',
 	/** Yandex Metrika counter. NaN in the template itself, then the page has no counter. */
 	metrikaId: Number('__METRIKA_ID__'),
+	/** Source code, the "Исходный код" link of the author credit in the footer. */
+	repo: 'https://github.com/aimuzov-projects/__PROJECT__',
 }
