@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# Выкладка на самом сервере: подтянуть main и пересобрать контейнеры.
-# Её вызывают GitHub Actions на каждый пуш в main и при ручном запуске workflow.
-# Для ключа из Actions это единственная разрешённая команда (command= в authorized_keys).
+# Deploy on the server itself: pull main and rebuild the containers.
+# GitHub Actions runs it on every push to main and on a manual workflow run.
+# It's the only command allowed for the Actions key (command= in authorized_keys).
 set -euo pipefail
 
-# Тело в блоке: bash дочитает его целиком до того, как git pull подменит этот файл.
+# The body is a block, so bash reads all of it before git pull replaces this file.
 {
 	cd /srv/__PROJECT__
 
-	# Два пуша подряд не должны собирать compose одновременно: второй ждёт первого.
+	# Two pushes in a row must not run compose at once: the second waits for the first.
 	exec 9>/tmp/__PROJECT__-deploy.lock
 	flock 9
 

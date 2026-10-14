@@ -1,6 +1,6 @@
 export const site = {
-	/** Название сайта: `<title>` главной, `og:site_name`, хвост заголовков остальных страниц. */
+	/** Site name: the home page `<title>`, `og:site_name`, the tail of other page titles. */
 	name: '__NAME__',
-	/** `meta description` и `og:description` по умолчанию. */
+	/** Default `meta description` and `og:description`. */
 	description: '__DESCRIPTION__',
 }
