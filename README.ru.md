@@ -35,7 +35,7 @@
 
 - **Главная** (`/`): название и описание сайта из [`src/frontend/data/site.ts`](src/frontend/data/site.ts).
 - **404**: заглушка «такой страницы нет» со ссылкой на главную.
-- **Аналитика**: Яндекс Метрика, счётчик в [`metrika.astro`](src/frontend/components/metrika.astro).
+- **Аналитика**: Яндекс Метрика, компонент счётчика берётся из [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit) и сам добавляет свои источники в CSP; номер счётчика — `metrikaId` в [`site.ts`](src/frontend/data/site.ts).
 
 ## Как устроено
 
