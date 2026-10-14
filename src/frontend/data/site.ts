@@ -3,4 +3,6 @@ export const site = {
 	name: '__NAME__',
 	/** Default `meta description` and `og:description`. */
 	description: '__DESCRIPTION__',
+	/** Yandex Metrika counter. NaN in the template itself, then the page has no counter. */
+	metrikaId: Number('__METRIKA_ID__'),
 }
