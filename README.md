@@ -36,6 +36,12 @@ Before committing:
 npm run format:check && npm run lint:js && npm run lint:css && npm run check && npm test
 ```
 
+## Mobile
+
+Safari on iPhone zooms the page in when you tap a field whose text is under 16px, and never zooms back out. So `input`, `textarea` and `select` on touch screens (`@media (--touch)`) get at least `1rem`: the base rule lives in [`global.css`](src/frontend/styles/global.css), and a component that sets its own `font-size` on a field has to repeat it.
+
+Zoom as a whole is not turned off with `maximum-scale=1` or `user-scalable=no` in the viewport: that leaves people with poor eyesight no way to enlarge small text.
+
 ## Content Security Policy
 
 The build puts a CSP with hashes of Astro's scripts and styles into every page (the `security.csp` option in `astro.config.mjs`). `npm run dev` has no policy, so violations only show up after `npm run build && npm run preview` and in production.

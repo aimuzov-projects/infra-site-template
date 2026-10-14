@@ -27,6 +27,16 @@ body {
 	background: var(--bg);
 }
 
+/* Safari на iPhone приближает страницу к полю с текстом мельче 16px, стоит в нём встать.
+   Класс компонента перебивает это правило, поэтому своё поле на телефоне — тоже от 1rem. */
+input,
+textarea,
+select {
+	@media (--touch) {
+		font-size: max(1rem, 1em);
+	}
+}
+
 img {
 	display: block;
 	max-width: 100%;
