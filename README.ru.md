@@ -81,11 +81,11 @@ Safari на iPhone сам приближает страницу, когда вс
 
 ## Выкладка
 
-Сервер проектов из [infra-server](https://github.com/aimuzov-projects/infra-server): пуш в `main` запускает `deploy.yml`, он гоняет проверки и заходит по SSH. Шаги обоих берутся из [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit), там же адрес сервера и его строка `known_hosts`. Там ключ запускает общий [`deploy/site.sh`](https://github.com/aimuzov-projects/infra-server/blob/main/deploy/site.sh) из infra-server, который подтягивает `main` и пересобирает контейнер `__PROJECT__` (nginx со статикой) из [`deploy/docker-compose.yml`](deploy/docker-compose.yml). Домен и TLS держит общий Caddy. `.env` лежит на сервере в `/srv/__PROJECT__`.
+Сервер проектов из [infra-server](https://github.com/aimuzov-projects/infra-server): мерж релизного PR, который ведёт release-please, запускает `deploy.yml`, он гоняет проверки и заходит по SSH. Шаги обоих берутся из [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit), там же адрес сервера и его строка `known_hosts`. Там ключ запускает общий [`deploy/site.sh`](https://github.com/aimuzov-projects/infra-server/blob/main/deploy/site.sh) из infra-server, который подтягивает `main` и пересобирает контейнер `__PROJECT__` (nginx со статикой) из [`deploy/docker-compose.yml`](deploy/docker-compose.yml). Домен и TLS держит общий Caddy. `.env` лежит на сервере в `/srv/__PROJECT__`.
 
-Job выкладки запускается, только когда переменная репозитория `DEPLOY_ENABLED` равна `true`, так что пока сервер не готов, пуш гоняет одни проверки.
+Job выкладки запускается, только когда переменная репозитория `DEPLOY_ENABLED` равна `true`, так что пока сервер не готов, релиз гоняет одни проверки.
 
-Откатиться — `git revert` плохого коммита в `main` и пуш.
+Быстро откатиться — запустить Deploy вручную с прошлым тегом: `gh workflow run deploy.yml -f tag=v1.2.3`. Исправление плохого коммита выезжает через релизный PR, как любое изменение.
 
 ## Лицензия
 
