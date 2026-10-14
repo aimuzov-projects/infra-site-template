@@ -1,5 +1,5 @@
-# The site on the projects server. Ports 80/443 belong to the shared Caddy
-# from aimuzov-projects/infra-server, it proxies the domain here over the edge network.
+# Сайт на сервере проектов. Порты 80/443 занимает общий Caddy
+# из aimuzov-projects/infra-server, он проксирует сюда домен через сеть `edge`.
 
 name: __PROJECT__
 
@@ -22,7 +22,7 @@ services:
       - edge
     logging: *logging
 
-# Build variables live in /srv/__PROJECT__/.env, the sample is .env.example.
+# Переменные сборки лежат в `/srv/__PROJECT__/.env`, образец -- `.env.example`.
 secrets:
   env:
     file: ../.env

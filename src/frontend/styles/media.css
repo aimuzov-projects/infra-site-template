@@ -1,6 +1,5 @@
-/* Breakpoints for @media (--md) and the like. PostCSS injects this file
-   into every style block, it never gets into the bundle by itself.
-   Each --below-* ends exactly where its pair begins. */
+/* Брейкпоинты для @media (--md) и т. п. PostCSS подмешивает файл в каждый блок стилей,
+   в бандл он сам не попадает. Пары --below-* закрывают ровно до следующего порога. */
 @custom-media --sm (width >= 600px);
 @custom-media --md (width >= 900px);
 @custom-media --lg (width >= 1000px);
@@ -12,9 +11,9 @@
 
 @custom-media --reduced-motion (prefers-reduced-motion: reduce);
 
-/* A finger instead of a mouse: phones and tablets. */
+/* Палец вместо мыши: телефоны и планшеты. */
 @custom-media --touch (pointer: coarse);
 
-/* Hide what scripts reveal only if scripts run: without them the page shows at once. */
+/* Что проявляет скрипт, прячем только когда скрипты есть: без них страница видна сразу. */
 @custom-media --scripting (scripting: enabled);
 @custom-media --no-scripting (scripting: none);

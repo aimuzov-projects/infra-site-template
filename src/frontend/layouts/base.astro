@@ -8,11 +8,11 @@ import { site } from '#frontend/data/site.ts'
 import { pageTitle } from '#frontend/lib/title.ts'
 
 type Props = {
-	/** Page name, the site name gets appended to it. Not set on the home page. */
+	/** Название страницы, к нему добавится название сайта. У главной не задаётся. */
 	title?: string
-	/** `meta description` and `og:description`, `site.description` by default. */
+	/** `meta description` и `og:description`, по умолчанию `site.description`. */
 	description?: string
-	/** `false` for service pages like 404: no canonical and indexing is disallowed. */
+	/** `false` у служебных страниц вроде 404: без canonical и с запретом индексации. */
 	index?: boolean
 }
 

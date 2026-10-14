@@ -1,10 +1,10 @@
 export const site = {
-	/** Site name: the home page `<title>`, `og:site_name`, the tail of other page titles. */
+	/** Название сайта: `<title>` главной, `og:site_name`, хвост заголовков остальных страниц. */
 	name: '__NAME__',
-	/** Default `meta description` and `og:description`. */
+	/** `meta description` и `og:description` по умолчанию. */
 	description: '__DESCRIPTION__',
-	/** Yandex Metrika counter. NaN in the template itself, then the page has no counter. */
+	/** Номер счётчика Яндекс Метрики. В самом шаблоне это `NaN`, и тогда счётчика на странице нет. */
 	metrikaId: Number('__METRIKA_ID__'),
-	/** Source code, the "Исходный код" link of the author credit in the footer. */
+	/** Репозиторий проекта, на него ведёт ссылка "Исходный код" в подписи автора в подвале. */
 	repo: 'https://github.com/aimuzov-projects/__PROJECT__',
 }
