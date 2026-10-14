@@ -27,8 +27,8 @@ body {
 	background: var(--bg);
 }
 
-/* Safari на iPhone приближает страницу к полю с текстом мельче 16px, стоит в нём встать.
-   Класс компонента перебивает это правило, поэтому своё поле на телефоне — тоже от 1rem. */
+/* Safari on iPhone zooms into a focused field whose text is under 16px.
+   A component class beats this rule, so its own field on a phone needs 1rem too. */
 input,
 textarea,
 select {

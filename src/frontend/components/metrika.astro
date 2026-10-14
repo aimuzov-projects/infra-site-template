@@ -1,12 +1,13 @@
 ---
-// Яндекс Метрика. Сайт без счётчика: удалить этот компонент, его вызов в base.astro
-// и источники mc.yandex.ru и yastatic.net из security.csp в astro.config.mjs.
+// Yandex Metrika. For a site without the counter, remove this component,
+// its call in base.astro and the mc.yandex.ru and yastatic.net sources
+// from security.csp in astro.config.mjs.
 ---
 
-{/* Скрипт счётчика (~85 КБ) на мобильном отнимает канал у шрифтов и первого фото, поэтому
-    грузим его по первому действию или через 4 с после load, вызовы ym до того ждут в очереди.
-    Вебвизор выключен: на мобильном он заметно поднимает LCP. Комментарии здесь, а не в скрипте:
-    is:inline уходит в HTML как есть. */}
+{/* On mobile the ~85 KB counter script steals bandwidth from fonts and the first photo,
+    so it loads on first interaction or 4 s after load, earlier ym calls are queued.
+    Webvisor is off: on mobile it noticeably raises LCP. The comments live here, not in
+    the script, because is:inline goes into the HTML as is. */}
 <script is:inline>
 	;(function (m, e, t, r, i, k, a) {
 		m[i] =

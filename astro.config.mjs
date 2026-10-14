@@ -3,19 +3,21 @@ import svelte from '@astrojs/svelte'
 import { defineConfig } from 'astro/config'
 
 export default defineConfig({
-	// Сайт живёт в src/frontend: рядом встают src/backend и src/shared, когда проекту нужен свой API.
+	// The site lives in src/frontend so that src/backend and src/shared
+	// fit next to it when a project needs its own API.
 	srcDir: './src/frontend',
-	// Абсолютные ссылки в canonical, og:url и sitemap.
+	// Absolute URLs in canonical, og:url and the sitemap.
 	site: 'https://__DOMAIN__',
-	// CSS немного: внутри HTML он не блокирует первую отрисовку отдельным запросом.
+	// There is little CSS, and inlined into the HTML it doesn't block
+	// the first paint with a separate request.
 	build: { inlineStylesheets: 'always' },
-	// Svelte для интерактивных островков, остальное -- статичный HTML с ванильными скриптами.
+	// Svelte for interactive islands, the rest is static HTML with vanilla scripts.
 	integrations: [svelte(), sitemap()],
-	// Подсветка Shiki несовместима с CSP.
+	// Shiki highlighting is incompatible with CSP.
 	markdown: { syntaxHighlight: false },
-	// Astro кладёт CSP с хешами своих скриптов и стилей в <meta> страницы. Снаружи только
-	// Яндекс Метрика (mc.yandex.ru, yastatic.net). frame-ancestors в <meta> не действует,
-	// встраивание запрещает X-Frame-Options в Caddy.
+	// Astro puts a CSP with hashes of its own scripts and styles into the page <meta>.
+	// The only external source is Yandex Metrika (mc.yandex.ru, yastatic.net).
+	// frame-ancestors doesn't work in <meta>, Caddy blocks embedding via X-Frame-Options.
 	security: {
 		csp: {
 			scriptDirective: { resources: ["'self'", 'https://mc.yandex.ru', 'https://yastatic.net'] },
