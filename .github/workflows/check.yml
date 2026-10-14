@@ -1,7 +1,7 @@
 name: Check
 
-# On main the deploy workflow calls these checks before shipping,
-# so a separate run there would be a duplicate.
+# На main эти проверки вызывает workflow деплоя перед выкаткой,
+# поэтому отдельный прогон там был бы дублем.
 on:
   push:
     branches-ignore: [main]

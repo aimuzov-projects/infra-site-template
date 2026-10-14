@@ -19,7 +19,7 @@
 	box-sizing: border-box;
 }
 
-/* A column at least the screen tall, so the footer stays at the bottom of a short page. */
+/* Колонка не ниже экрана, чтобы на короткой странице подвал оставался внизу. */
 body {
 	display: flex;
 	flex-direction: column;
@@ -31,8 +31,8 @@ body {
 	background: var(--bg);
 }
 
-/* Safari on iPhone zooms into a focused field whose text is under 16px.
-   A component class beats this rule, so its own field on a phone needs 1rem too. */
+/* Safari на iPhone приближает страницу к полю с текстом мельче 16px, стоит в нём встать.
+   Класс компонента перебивает это правило, поэтому своё поле на телефоне — тоже от 1rem. */
 input,
 textarea,
 select {
