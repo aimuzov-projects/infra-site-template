@@ -1,4 +1,15 @@
 <p align="center">
+	<a href="README.md"><img src="https://img.shields.io/badge/English-555?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PGNsaXBQYXRoIGlkPSJ0Ij48cGF0aCBkPSJNMzAsMTVoMzB2MTV6djE1aC0zMHpoLTMwdi0xNXp2LTE1aDMweiIvPjwvY2xpcFBhdGg+PHBhdGggZD0iTTAsMHYzMGg2MHYtMzB6IiBmaWxsPSIjMDEyMTY5Ii8+PHBhdGggZD0iTTAsMCA2MCwzME02MCwwIDAsMzAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTAsMCA2MCwzME02MCwwIDAsMzAiIGNsaXAtcGF0aD0idXJsKCN0KSIgc3Ryb2tlPSIjQzgxMDJFIiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNMzAsMHYzME0wLDE1aDYwIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMTAiLz48cGF0aCBkPSJNMzAsMHYzME0wLDE1aDYwIiBzdHJva2U9IiNDODEwMkUiIHN0cm9rZS13aWR0aD0iNiIvPjwvc3ZnPg==" alt="English"></a>
+	<img src="https://img.shields.io/badge/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-0066cc?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5IDYiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoOXYzSDB6Ii8+PHBhdGggZmlsbD0iIzAwMzlhNiIgZD0iTTAgMmg5djJIMHoiLz48cGF0aCBmaWxsPSIjZDUyYjFlIiBkPSJNMCA0aDl2MkgweiIvPjwvc3ZnPg==" alt="Русский">
+</p>
+
+<!-- Раскомментировать, когда в .github/assets появится banner.jpg.
+<p align="center">
+	<a href="https://__DOMAIN__"><img src=".github/assets/banner.jpg" alt="__NAME__: __DESCRIPTION__" width="100%"></a>
+</p>
+-->
+
+<p align="center">
 	<a href="https://github.com/aimuzov-projects/__PROJECT__/actions/workflows/deploy.yml"><img src="https://img.shields.io/github/actions/workflow/status/aimuzov-projects/__PROJECT__/deploy.yml?branch=main&label=deploy" alt="Deploy"></a>
 	<a href="https://__DOMAIN__"><img src="https://img.shields.io/website?url=https%3A%2F%2F__DOMAIN__&label=site" alt="Site status"></a>
 	<a href="package.json"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Faimuzov-projects%2F__PROJECT__%2Fmain%2Fpackage.json&query=%24.engines.node&label=node&logo=nodedotjs&logoColor=white&color=5fa04e" alt="Node"></a>
@@ -7,30 +18,47 @@
 	<a href="LICENSE"><img src="https://img.shields.io/github/license/aimuzov-projects/__PROJECT__" alt="License"></a>
 </p>
 
-<p align="center"><a href="README.md">English</a> · <b>Русский</b></p>
+<h3 align="center">__DESCRIPTION__</h3>
 
-<p>__DESCRIPTION__: <a href="https://__DOMAIN__">__DOMAIN__</a>.</p>
+<!-- Раскомментировать, когда в .github/assets появятся скриншоты.
+<table>
+	<tr>
+		<td width="50%" align="center"><img src=".github/assets/home.jpg" alt="Главная"><br><b>Главная</b> для посетителей</td>
+		<td width="50%" align="center"><img src=".github/assets/screen.jpg" alt="Второй экран"><br><b>Экран</b> что на нём</td>
+	</tr>
+</table>
+-->
 
-Статичный сайт на [Astro](https://astro.build), интерактивные островки на [Svelte](https://svelte.dev).
+<p>Живёт на <a href="https://__DOMAIN__">__DOMAIN__</a>. Статичный сайт на <a href="https://astro.build">Astro</a>, интерактивные островки на <a href="https://svelte.dev">Svelte</a>.</p>
 
-## Раскладка
+## Что внутри
 
-- [`src/frontend`](src/frontend) — сайт на Astro, это `srcDir` в `astro.config.mjs`. Импорты — через `#frontend/*`.
-- Все файлы, компоненты тоже, называются в kebab-case: `base.astro`, `section-photo.astro`. Имя в разметке задаёт импорт (`import Base from '#frontend/layouts/base.astro'`), а за файлами следит правило `unicorn/filename-case` в oxlint.
-- Если проекту нужен свой API, он встаёт рядом с сайтом, как в shkatova-psychologist и prestige-logist: сервис в `src/backend` (`#backend/*`, голый Node без сборки), общий для обеих сторон код в `src/shared` (`#shared/*`), образ в `deploy/backend.Dockerfile` и второй сервис в `deploy/docker-compose.yml`. Сайт из `src/backend` ничего не импортирует.
-- [`deploy`](deploy) — всё про сервер: Dockerfile, compose, nginx и скрипт выкладки.
+- **Главная** (`/`): название и описание сайта из [`src/frontend/data/site.ts`](src/frontend/data/site.ts).
+- **404**: заглушка «такой страницы нет» со ссылкой на главную.
+- **Аналитика**: Яндекс Метрика, счётчик в [`metrika.astro`](src/frontend/components/metrika.astro).
+
+## Как устроено
+
+Всё лежит в `src/`:
+
+- [`src/frontend`](src/frontend): сайт на Astro, это `srcDir` в `astro.config.mjs`. Импорты — через `#frontend/*`.
+- Если проекту нужен свой API, он встаёт рядом с сайтом, как в shkatova-psychologist и prestige-logist: сервис в `src/backend` (`#backend/*`, голый Node без сборки), общий для обеих сторон код в `src/shared` (`#shared/*`), образ в `deploy/backend.Dockerfile` и второй сервис в `deploy/docker-compose.yml`. Сайт из `src/backend` ничего не импортирует.
+
+Всё про сервер — в [`deploy`](deploy): Dockerfile, compose, nginx и скрипт выкладки.
+
+Все файлы, компоненты тоже, называются в kebab-case: `base.astro`, `section-photo.astro`. Имя в разметке задаёт импорт (`import Base from '#frontend/layouts/base.astro'`), а за файлами следит правило `unicorn/filename-case` в oxlint.
 
 ## Запуск
 
-Нужен Node 26.11.1, эта же версия закреплена в `package.json` и в [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
+Стек и раскладка — из [infra-template-site](https://github.com/aimuzov-projects/infra-template-site): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test`. Node берётся из [`mise.toml`](mise.toml), эта же версия закреплена в `package.json` и в [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
 
 ```sh
-cp .env.example .env
+cp .env.example .env   # может остаться пустым, но файл должен быть
 npm ci
 npm run dev
 ```
 
-Перед коммитом:
+Перед коммитом — те же проверки, что в CI:
 
 ```sh
 npm run format:check && npm run lint:js && npm run lint:css && npm run check && npm test
@@ -52,7 +80,11 @@ Safari на iPhone сам приближает страницу, когда вс
 
 ## Выкладка
 
-Пуш в `main` запускает GitHub Actions: сначала проверки, затем вход по SSH на сервер. Там ключ привязан к [`deploy/remote.sh`](deploy/remote.sh), который подтягивает `main` и пересобирает контейнер из [`deploy/docker-compose.yml`](deploy/docker-compose.yml). Домен обслуживает общий Caddy сервера ([aimuzov-projects/infra-server](https://github.com/aimuzov-projects/infra-server)), `.env` лежит на сервере рядом с репозиторием. Job выкладки запускается, только когда переменная репозитория `DEPLOY_ENABLED` равна `true`.
+Сервер проектов из [infra-server](https://github.com/aimuzov-projects/infra-server): пуш в `main` запускает `deploy.yml`, он гоняет проверки и заходит по SSH. Там ключ привязан к [`deploy/remote.sh`](deploy/remote.sh), который подтягивает `main` и пересобирает контейнер `__PROJECT__` (nginx со статикой) из [`deploy/docker-compose.yml`](deploy/docker-compose.yml). Домен и TLS держит общий Caddy. `.env` лежит на сервере в `/srv/__PROJECT__`.
+
+Job выкладки запускается, только когда переменная репозитория `DEPLOY_ENABLED` равна `true`, так что пока сервер не готов, пуш гоняет одни проверки.
+
+Откатиться — `git revert` плохого коммита в `main` и пуш.
 
 ## Лицензия
 
