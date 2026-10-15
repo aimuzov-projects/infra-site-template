@@ -3,6 +3,12 @@
 	<img src="https://img.shields.io/badge/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-0066cc?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5IDYiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoOXYzSDB6Ii8+PHBhdGggZmlsbD0iIzAwMzlhNiIgZD0iTTAgMmg5djJIMHoiLz48cGF0aCBmaWxsPSIjZDUyYjFlIiBkPSJNMCA0aDl2MkgweiIvPjwvc3ZnPg==" alt="Русский">
 </p>
 
+<!-- template-only: баннер самого шаблона, site-bootstrapper вырезает этот блок из нового сайта. -->
+<p align="center">
+	<a href="https://github.com/aimuzov-projects/infra-site-template"><img src="https://raw.githubusercontent.com/aimuzov-projects/.github/main/profile/assets/infra-site-template.jpg" alt="infra-site-template: стартовый шаблон для новых сайтов" width="100%"></a>
+</p>
+<!-- /template-only -->
+
 <!-- Раскомментировать, когда в .github/assets появится banner.jpg.
 <p align="center">
 	<a href="https://__DOMAIN__"><img src=".github/assets/banner.jpg" alt="__NAME__: __DESCRIPTION__" width="100%"></a>

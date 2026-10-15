@@ -3,6 +3,12 @@
 	<a href="README.ru.md"><img src="https://img.shields.io/badge/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-555?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5IDYiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoOXYzSDB6Ii8+PHBhdGggZmlsbD0iIzAwMzlhNiIgZD0iTTAgMmg5djJIMHoiLz48cGF0aCBmaWxsPSIjZDUyYjFlIiBkPSJNMCA0aDl2MkgweiIvPjwvc3ZnPg==" alt="Русский"></a>
 </p>
 
+<!-- template-only: the template's own banner, site-bootstrapper cuts this block out of a new site. -->
+<p align="center">
+	<a href="https://github.com/aimuzov-projects/infra-site-template"><img src="https://raw.githubusercontent.com/aimuzov-projects/.github/main/profile/assets/infra-site-template.en.jpg" alt="infra-site-template: a starter for every new site" width="100%"></a>
+</p>
+<!-- /template-only -->
+
 <!-- Uncomment once .github/assets/banner.en.jpg is in place.
 <p align="center">
 	<a href="https://__DOMAIN__"><img src=".github/assets/banner.en.jpg" alt="__NAME__: __DESCRIPTION_EN__" width="100%"></a>
