@@ -45,7 +45,7 @@
 - [`src/frontend`](src/frontend): сайт на Astro, это `srcDir` в `astro.config.mjs`. Импорты — через `#frontend/*`.
 - Если проекту нужен свой API, он встаёт рядом с сайтом, как в shkatova-psychologist и prestige-logist: сервис в `src/backend` (`#backend/*`, голый Node без сборки), общий для обеих сторон код в `src/shared` (`#shared/*`), образ в `deploy/backend.Dockerfile` и второй сервис в `deploy/docker-compose.yml`. Сайт из `src/backend` ничего не импортирует.
 
-Всё про сервер — в [`deploy`](deploy): Dockerfile, compose, nginx и скрипт выкладки.
+Всё про сервер — в [`deploy`](deploy): Dockerfile, compose и nginx. Скрипт выкладки общий для всех сайтов и лежит в [infra-server](https://github.com/aimuzov-projects/infra-server).
 
 Все файлы, компоненты тоже, называются в kebab-case: `base.astro`, `section-photo.astro`. Имя в разметке задаёт импорт (`import Base from '#frontend/layouts/base.astro'`), а за файлами следит правило `unicorn/filename-case` в oxlint.
 
@@ -62,10 +62,10 @@ npm run dev
 Перед коммитом — те же проверки, что в CI:
 
 ```sh
-npm run format:check && npm run lint:js && npm run lint:css && npm run check && npm test
+npm run format:check && npm run lint:js && npm run lint:css && npm run check && npm test && npm run build
 ```
 
-E2E-тесты в [`e2e`](e2e) собирают сайт и открывают его в Chromium: каждая страница из sitemap отвечает без ошибок в консоли и проходит axe, Метрика ждёт первого действия. Браузер ставится один раз через `npx playwright install chromium`.
+E2E-тесты в [`e2e`](e2e) собирают сайт и открывают его в Chromium: каждая страница из sitemap отвечает без ошибок в консоли и проходит axe, а если у сайта есть счётчик, Метрика ждёт первого действия. В CI они идут после проверок. Браузер ставится один раз через `npx playwright install chromium`.
 
 ```sh
 npm run test:e2e
@@ -82,14 +82,14 @@ Safari на iPhone сам приближает страницу, когда вс
 Сборка кладёт в каждую страницу CSP с хешами скриптов и стилей Astro (настройка `security.csp` в `astro.config.mjs`). В `npm run dev` политики нет, поэтому нарушения видны только после `npm run build && npm run preview` и на проде.
 
 - Никаких атрибутов `style=""` и обработчиков вроде `onclick`: стили задаются классами и правилами в `<style>`, обработчики живут в `<script>`.
-- Внешний скрипт, картинку или запрос (виджет, карту, шрифт с CDN) сначала нужно разрешить в `security.csp`. Сейчас там только Яндекс Метрика.
+- Внешний скрипт, картинку или запрос (виджет, карту, шрифт с CDN) сначала нужно разрешить в `security.csp`. Из коробки там разрешён только сам сайт: компонент Яндекс Метрики приносит свой хеш и источники сам.
 - После таких правок стоит открыть консоль браузера в `npm run preview`: всё заблокированное браузер пишет туда.
 
 ## Выкладка
 
-Сервер проектов из [infra-server](https://github.com/aimuzov-projects/infra-server): мерж релизного PR, который ведёт release-please, запускает `deploy.yml`, он гоняет проверки и заходит по SSH. Шаги обоих берутся из [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit), там же адрес сервера и его строка `known_hosts`. Там ключ запускает общий [`deploy/site.sh`](https://github.com/aimuzov-projects/infra-server/blob/main/deploy/site.sh) из infra-server, который подтягивает `main` и пересобирает контейнер `__PROJECT__` (nginx со статикой) из [`deploy/docker-compose.yml`](deploy/docker-compose.yml). Домен и TLS держит общий Caddy. `.env` лежит на сервере в `/srv/__PROJECT__`.
+Сервер проектов из [infra-server](https://github.com/aimuzov-projects/infra-server): мерж релизного PR, который ведёт release-please, запускает `deploy.yml`, он гоняет проверки и заходит по SSH. Шаги обоих берутся из [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit), там же адрес сервера и его строка `known_hosts`. Там ключ запускает общий [`deploy/site.sh`](https://github.com/aimuzov-projects/infra-server/blob/main/deploy/site.sh) из infra-server, который переключается на релизный тег и пересобирает контейнер `__PROJECT__` (nginx со статикой) из [`deploy/docker-compose.yml`](deploy/docker-compose.yml). Сборка идёт в юните systemd, так что оборванное SSH-соединение её не прерывает. Домен и TLS держит общий Caddy. `.env` лежит на сервере в `/srv/__PROJECT__`.
 
-Job выкладки запускается, только когда переменная репозитория `DEPLOY_ENABLED` равна `true`, так что пока сервер не готов, релиз гоняет одни проверки.
+Job выкладки запускается, только когда переменная репозитория `DEPLOY_ENABLED` равна `true`, а SSH-ключ лежит в секрете `DEPLOY_SSH_KEY`. Пока сервер не готов, релиз гоняет одни проверки.
 
 Быстро откатиться — запустить Deploy вручную с прошлым тегом: `gh workflow run deploy.yml -f tag=v1.2.3`. Исправление плохого коммита выезжает через релизный PR, как любое изменение.
 
