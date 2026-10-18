@@ -42,7 +42,7 @@ The site is in Russian, so the names below are translated.
 ## What's inside
 
 - **Home** (`/`): the site name and description from [`src/frontend/data/site.ts`](src/frontend/data/site.ts).
-- **404**: a "no such page" stub with a link home.
+- **404**: the shared not-found page from [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit) inside the site layout: a link home, "back" for visitors who came from the site and suggestions from the sitemap.
 - **Footer**: the author credit from [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit) with a link to the source code, `repo` in [`site.ts`](src/frontend/data/site.ts).
 - **Analytics**: Yandex Metrica, the counter component comes from [infra-site-kit](https://github.com/aimuzov-projects/infra-site-kit) and adds its own CSP sources; the counter number is `metrikaId` in [`site.ts`](src/frontend/data/site.ts).
 
