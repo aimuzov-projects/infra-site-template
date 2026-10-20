@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/aimuzov-projects/infra-site-template/compare/v1.1.0...v1.2.0) (2026-10-20)
+
+
+### Features
+
+* reserve the scrollbar gutter on every page ([e61a2b7](https://github.com/aimuzov-projects/infra-site-template/commit/e61a2b7aed8df3629744c272093893b4c0721034))
+* reserve the scrollbar gutter on every page ([d6e09e3](https://github.com/aimuzov-projects/infra-site-template/commit/d6e09e333417c8b2f24d309aa3e9f1f9190e9481))
+
 ## [1.1.0](https://github.com/aimuzov-projects/infra-site-template/compare/v1.0.0...v1.1.0) (2026-10-18)
 
 
