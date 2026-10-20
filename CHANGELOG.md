@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/aimuzov-projects/infra-site-template/compare/v1.2.0...v1.2.1) (2026-10-20)
+
+
+### Bug Fixes
+
+* **deps:** move to infra-site-kit v2 with base.css ([da426fd](https://github.com/aimuzov-projects/infra-site-template/commit/da426fde9c0046a577ac2ce23c46eee5b460e4f4))
+* **deps:** move to infra-site-kit v2 with base.css ([5df0440](https://github.com/aimuzov-projects/infra-site-template/commit/5df04407df774234c16f2d34707d0754c910ef27))
+
 ## [1.2.0](https://github.com/aimuzov-projects/infra-site-template/compare/v1.1.0...v1.2.0) (2026-10-20)
 
 
