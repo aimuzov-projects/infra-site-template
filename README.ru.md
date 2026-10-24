@@ -49,7 +49,7 @@
 Всё лежит в `src/`:
 
 - [`src/frontend`](src/frontend): сайт на Astro, это `srcDir` в `astro.config.mjs`. Импорты — через `#frontend/*`.
-- Если проекту нужен свой API, он встаёт рядом с сайтом, как в shkatova-psychologist и prestige-logist: сервис в `src/backend` (`#backend/*`, голый Node без сборки), общий для обеих сторон код в `src/shared` (`#shared/*`), образ в `deploy/backend.Dockerfile` и второй сервис в `deploy/docker-compose.yml`. Сайт из `src/backend` ничего не импортирует.
+- [`src/backend`](src/backend): API рядом с сайтом, как в shkatova-psychologist и community-taplist. Голый Node запускает TypeScript, без сборки и зависимостей; импорты через `#backend/*`, общий для обеих сторон код — в `src/shared` (`#shared/*`). В нём уже есть `GET /api/health`: его опрашивает деплой после релиза (`health-url` в `deploy.yml`) и compose в контейнере. На проде `/api/*` сюда шлёт Caddy, локально — прокси Vite в `astro.config.mjs`. Образ — `deploy/backend.Dockerfile`, сервис `api` — в `deploy/docker-compose.yml`. Сайт из `src/backend` ничего не импортирует. Сайт без API убирает всё это: папку, Dockerfile, сервис, скрипт `dev:api`, прокси и `health-url`.
 
 Всё про сервер — в [`deploy`](deploy): Dockerfile, compose и nginx. Скрипт выкладки общий для всех сайтов и лежит в [infra-server](https://github.com/aimuzov/infra-server).
 
@@ -57,12 +57,13 @@
 
 ## Запуск
 
-Стек и раскладка — из [infra-site-template](https://github.com/aimuzov/infra-site-template): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test` для unit-тестов, Playwright для e2e. Конфиги Prettier, stylelint, oxlint и Playwright и шаги CI берутся из [infra-site-kit](https://github.com/aimuzov/infra-site-kit). Node берётся из [`mise.toml`](mise.toml), эта же версия закреплена в `package.json` и в [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
+Стек и раскладка — из [infra-site-template](https://github.com/aimuzov/infra-site-template): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test` для unit-тестов, Playwright для e2e. Конфиги Prettier, stylelint, oxlint и Playwright и шаги CI берутся из [infra-site-kit](https://github.com/aimuzov/infra-site-kit). Node берётся из [`mise.toml`](mise.toml), эта же версия закреплена в `package.json` и в обоих Dockerfile в [`deploy`](deploy).
 
 ```sh
 cp .env.example .env   # может остаться пустым, но файл должен быть
 npm ci
-npm run dev
+npm run dev       # сайт
+npm run dev:api   # API, сайт проксирует к нему /api
 ```
 
 Перед коммитом — те же проверки, что в CI:

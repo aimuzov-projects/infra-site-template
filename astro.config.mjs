@@ -2,6 +2,8 @@ import sitemap from '@astrojs/sitemap'
 import svelte from '@astrojs/svelte'
 import { defineConfig } from 'astro/config'
 
+const proxy = { '/api': 'http://localhost:8787' }
+
 export default defineConfig({
 	// Сайт живёт в `src/frontend` для того чтобы рядом поместились `src/backend`
 	// и `src/shared`, когда проекту понадобится своё API.
@@ -14,6 +16,8 @@ export default defineConfig({
 	// Svelte для интерактивных островов, остальное -- статический HTML
 	// с ванильными скриптами.
 	integrations: [svelte(), sitemap()],
+	// На проде `/api` отдаёт Caddy сервису API, локально его роль играет прокси Vite.
+	vite: { server: { proxy }, preview: { proxy } },
 	// Подсветка Shiki несовместима с CSP.
 	markdown: { syntaxHighlight: false },
 	// Astro кладёт в `<meta>` страницы CSP с хешами своих скриптов и стилей.

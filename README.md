@@ -51,7 +51,7 @@ The site is in Russian, so the names below are translated.
 Everything lives in `src/`:
 
 - [`src/frontend`](src/frontend): the Astro site, it is the `srcDir` in `astro.config.mjs`. Imports go through `#frontend/*`.
-- When the project needs its own API, it goes next to the site, the way shkatova-psychologist and prestige-logist do it: the service in `src/backend` (`#backend/*`, plain Node running TypeScript, no build), code both sides need in `src/shared` (`#shared/*`), the image in `deploy/backend.Dockerfile` and a second service in `deploy/docker-compose.yml`. The site never imports from `src/backend`.
+- [`src/backend`](src/backend): the API next to the site, the way shkatova-psychologist and community-taplist do it. Plain Node runs the TypeScript, no build and no dependencies; imports go through `#backend/*`, code both sides need goes to `src/shared` (`#shared/*`). It comes with `GET /api/health`, which the deploy polls after a release (`health-url` in `deploy.yml`) and compose polls in the container. In production Caddy sends `/api/*` here, locally the Vite proxy in `astro.config.mjs` does. The image is `deploy/backend.Dockerfile`, the `api` service is in `deploy/docker-compose.yml`. The site never imports from `src/backend`. A site without an API drops all of that: the folder, the Dockerfile, the service, the `dev:api` script, the proxy and `health-url`.
 
 Everything about the server is in [`deploy`](deploy): the Dockerfile, compose and nginx. The deploy script is shared by all sites and lives in [infra-server](https://github.com/aimuzov/infra-server).
 
@@ -59,12 +59,13 @@ Every file, components included, is named in kebab-case: `base.astro`, `section-
 
 ## Running
 
-Stack and layout follow [infra-site-template](https://github.com/aimuzov/infra-site-template): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test` for unit tests, Playwright for e2e. The Prettier, stylelint, oxlint and Playwright configs and the CI steps come from [infra-site-kit](https://github.com/aimuzov/infra-site-kit). Node comes from [`mise.toml`](mise.toml), the same version is pinned in `package.json` and [`deploy/frontend.Dockerfile`](deploy/frontend.Dockerfile).
+Stack and layout follow [infra-site-template](https://github.com/aimuzov/infra-site-template): Astro + Svelte 5, Prettier, oxlint, stylelint (BEM), `node --test` for unit tests, Playwright for e2e. The Prettier, stylelint, oxlint and Playwright configs and the CI steps come from [infra-site-kit](https://github.com/aimuzov/infra-site-kit). Node comes from [`mise.toml`](mise.toml), the same version is pinned in `package.json` and both Dockerfiles in [`deploy`](deploy).
 
 ```sh
 cp .env.example .env   # may stay empty, but the file has to exist
 npm ci
-npm run dev
+npm run dev       # the site
+npm run dev:api   # the API, the site proxies /api to it
 ```
 
 Before committing, the same checks as in CI:
