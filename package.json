@@ -9,6 +9,7 @@
 	},
 	"scripts": {
 		"dev": "astro dev",
+		"dev:api": "node --watch src/backend/server.ts",
 		"build": "astro build",
 		"preview": "astro preview",
 		"check": "astro check && svelte-check",
@@ -42,6 +43,8 @@
 		"typescript": "6.0.3"
 	},
 	"imports": {
-		"#frontend/*": "./src/frontend/*"
+		"#frontend/*": "./src/frontend/*",
+		"#backend/*": "./src/backend/*",
+		"#shared/*": "./src/shared/*"
 	}
 }
