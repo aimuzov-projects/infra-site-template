@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.0](https://github.com/aimuzov/infra-site-template/compare/v1.2.1...v1.3.0) (2026-10-24)
+
+
+### Features
+
+* add an API skeleton with /api/health next to the site ([dfa4cce](https://github.com/aimuzov/infra-site-template/commit/dfa4cce2baa52cf796b918b960d9fdfe57f588e7))
+* add an API skeleton with /api/health next to the site ([467b822](https://github.com/aimuzov/infra-site-template/commit/467b82231a773409b7a79f52ba8e247ab8aba9db))
+
+
+### Bug Fixes
+
+* **deps:** move to infra-site-kit v3 under the personal aimuzov account ([858135c](https://github.com/aimuzov/infra-site-template/commit/858135c718337549d1afb4e6d4485aa3269210cf))
+* **deps:** move to infra-site-kit v3 under the personal aimuzov account ([ecd98ae](https://github.com/aimuzov/infra-site-template/commit/ecd98aec09adbee0e5ee5264c757c66645c5749a))
+
 ## [1.2.1](https://github.com/aimuzov-projects/infra-site-template/compare/v1.2.0...v1.2.1) (2026-10-20)
 
 
