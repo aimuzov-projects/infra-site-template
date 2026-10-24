@@ -1,4 +1,4 @@
-import { siteChecks } from '@aimuzov-projects/infra-site-kit/playwright/checks'
+import { siteChecks } from '@aimuzov/infra-site-kit/playwright/checks'
 
 import { site } from '#frontend/data/site.ts'
 

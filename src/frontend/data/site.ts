@@ -6,5 +6,5 @@ export const site = {
 	/** Номер счётчика Яндекс Метрики. В самом шаблоне это `NaN`, и тогда счётчика на странице нет. */
 	metrikaId: Number('__METRIKA_ID__'),
 	/** Репозиторий проекта, на него ведёт ссылка "Исходный код" в подписи автора в подвале. */
-	repo: 'https://github.com/aimuzov-projects/__PROJECT__',
+	repo: 'https://github.com/aimuzov/__PROJECT__',
 }
